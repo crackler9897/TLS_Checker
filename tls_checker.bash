@@ -36,15 +36,15 @@ pauseIt()
   sleep .5
   echo -n "*"
   sleep .5
+  echo ""
+  echo ""
+  echo ""
 }
 
 partitions=($(tmsh -q -c 'cd /; list auth partition one-line' | awk '{ print $3 }'))
 
 pauseIt
 
-echo ""
-echo ""
-echo ""
 echo "Partitions: ${partitions[@]} *ALL*"
 echo ""
 
@@ -59,9 +59,6 @@ if [ -n "$env" ]; then
 fi
 
 pauseIt
-echo ""
-echo ""
-echo ""
 
 vipsArr=($(tmsh -q -c 'cd /'"$env"'; list ltm virtual one-line recursive' | awk '{print $3}' ))
 echo "${vipsArr[@]}"
