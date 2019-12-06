@@ -1,6 +1,11 @@
 #!/bin/bash
 # RUN ON STANDBY
 
+#   1.  Read in partition (env)
+#   2.  Create array of all virtual names based on partition
+#   3.  Run 'show ltm virtual' for each virtual and determine if 1.0 or 1.1 is being used
+#   4.  Output to file/list
+
 searchVip()
 {
   x=$(tmsh -q -c 'cd /; show ltm virtual '"$1"' profiles' | grep -A 35 'Ltm::ClientSSL Profile' | grep 'TLS Protocol Version 1.0' | awk '{print $6}')
@@ -71,16 +76,3 @@ for i in ${vipsArr[@]}; do
   searchVip "$i"
 done
 
-
-#   1.  Read in partition (env)
-#   2.  Create array of all virtual names based on partition
-#   **3.**  Run 'show ltm virtual' for each virtual and determine if 1.0 or 1.1 is being used
-#   4.  Output to file/list
-#
-#
-#
-#
-#
-#
-#
-#
