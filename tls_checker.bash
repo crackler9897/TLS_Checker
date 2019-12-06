@@ -23,10 +23,10 @@ searchVip()
         echo "$1" >> "$HOME"/TLS_1_2_only_all_partitions.txt
     elif [ "$x" != 0 ] || [ "$y" != 0 ]; then
         if [ -n "$env" ]; then
-          echo "$1" >> "$HOME"/TLS_offenders_"$env".txt
+            echo "$1" >> "$HOME"/TLS_offenders_"$env".txt
+          elif [ -z "$env" ]; then
+            echo "$1" >> "$HOME"/TLS_offenders_all_partitions.txt
         fi
-    else
-        echo "$1" >> "$HOME"/TLS_offenders_all_partitions.txt
   fi
 }
 
