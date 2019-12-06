@@ -1,10 +1,11 @@
 #!/bin/bash
-# RUN ON STANDBY
+# RUN ON STANDBY to test
 
 #   1.  Read in partition (env)
 #   2.  Create array of all virtual names based on partition
 #   3.  Run 'show ltm virtual' for each virtual and determine if 1.0 or 1.1 is being used
 #   4.  Output to file/list
+
 
 searchVip()
 {
@@ -75,4 +76,3 @@ for i in ${vipsArr[@]}; do
   echo "$i"
   searchVip "$i"
 done
-
